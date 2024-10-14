@@ -1,8 +1,8 @@
-import React from "react";
-import { Button, Input, Form, Radio, Card, Select } from "antd";
+// import React from "react";
+// import { Button, Input, Form, Radio, Card, Select } from "antd";
 
-const SignupPage = () => {
-  return <div>signupPage</div>;
-};
+// const SignupPage = () => {
+//   return <div>signupPage</div>;
+// };
 
-export default SignupPage;
+// export default SignupPage;

@@ -1,13 +1,17 @@
-import Fruit from "./components/listTest.js";
-import Form from "./components/formTest.js";
-import SignupPage from "./components/signupPage.js";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/MainHeader.js";
+import UserUpdatePage from "./components/user-update.js";
+import TwoPage from "./components/TwoPage.js";
+import NotFound from "./components/notFound.js";
 function App() {
   return (
     <div className="App">
-      <Fruit list={["apple", "banana", 3]} />
-      <Form />
-      <div>hello world</div>
-      <SignupPage />
+      <Header />
+      <Routes>
+        <Route path="/two" element={<TwoPage />} />
+        <Route path="/" element={<UserUpdatePage userId={1} />} />
+        <Route path="*" element={<NotFound />}></Route>
+      </Routes>
     </div>
   );
 }
