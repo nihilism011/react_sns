@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
-import { updateName } from "../lib/userUpdate";
+import { updateName } from "../lib/userLib";
 import axios from "axios";
 
 export const useUser = (userId) => {
