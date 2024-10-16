@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const useUser = (userId) => {
   const [testUser, setTestUser] = useState(null);
-  const url = `http://localhost:3001/test/${userId}`;
+  const url = `/test/${userId}`;
   useEffect(() => {
     axios
       .get(url)
