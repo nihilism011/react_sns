@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Menu } from "antd";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-const { Header } = Layout;
+const { Sider } = Layout;
 const menuItem = [
   {
     key: "update",
@@ -21,12 +21,7 @@ const menuItem = [
 const MainHeader = () => {
   const urlObj = useLocation();
   return (
-    <Header
-      style={{
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
+    <Sider>
       <Menu
         theme="dark"
         mode="horizontal"
@@ -37,7 +32,7 @@ const MainHeader = () => {
           minWidth: 0,
         }}
       />
-    </Header>
+    </Sider>
   );
 };
 
