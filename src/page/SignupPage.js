@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React from "react";
 import { Button, Input, Radio, Card, Form } from "antd";
 import { postAxios } from "../lib/restAxios.js";
 import axios from "axios";
@@ -18,7 +18,9 @@ const SignupPage = () => {
         <Form.Item
           label="아이디"
           name="userId"
+          validateDebounce={1000}
           rules={[
+            { required: true },
             () => ({
               validator: async (_, value) => {
                 const { data } = await axios.get("/user/idCheck", {
@@ -28,18 +30,29 @@ const SignupPage = () => {
                 return Promise.reject(new Error("중복된 아이디가 있습니다."));
               },
             }),
+            { min: 6, message: "아이디는 6자 이상 입력해주세요." },
+            { max: 20, message: "아이디는 20자 이하로 입력해주세요" },
           ]}
         >
           <Input />
         </Form.Item>
-        <Form.Item label="비번" name="password">
+        <Form.Item
+          label="비밀번호"
+          name="password"
+          rules={[
+            { required: true },
+            { min: 4, message: "패스워드는 4자 이상 입력해주세요." },
+            { max: 20, message: "패스워드는 20자 이하로 입력해주세요" },
+          ]}
+        >
           <Input />
         </Form.Item>
         <Form.Item
-          label="비번 확인"
+          label="비밀번호 확인"
           name="pwdCheck"
           dependencies={["password"]}
           rules={[
+            { required: true },
             ({ getFieldValue }) => ({
               validator(_, value) {
                 if (!value || getFieldValue("password") === value) {
@@ -54,13 +67,21 @@ const SignupPage = () => {
         >
           <Input />
         </Form.Item>
-        <Form.Item label="이름" name="userName">
+        <Form.Item label="이름" name="userName" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-        <Form.Item label="이메일" name="email">
+        <Form.Item
+          label="이메일"
+          name="email"
+          validateDebounce={1000}
+          rules={[
+            { required: true },
+            { type: "email", message: "email 형식에 맞게 입력해 주세요" },
+          ]}
+        >
           <Input />
         </Form.Item>
-        <Form.Item label="성별" name="gender">
+        <Form.Item label="성별" name="gender" rules={[{ required: true }]}>
           <Radio.Group>
             <Radio value={"M"}>남자</Radio>
             <Radio value={"F"}>여자</Radio>

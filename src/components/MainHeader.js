@@ -9,12 +9,12 @@ const menuItem = [
     label: <Link to="update/1">업데이트</Link>,
   },
   {
-    key: "two",
-    label: <Link to="two">두번째</Link>,
+    key: "signup",
+    label: <Link to="signup">회원가입</Link>,
   },
   {
-    key: "three",
-    label: <Link to="three">아직없음</Link>,
+    key: "testPage",
+    label: <Link to="testPage">테스트페이지</Link>,
   },
 ];
 
