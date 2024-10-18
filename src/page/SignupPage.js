@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Input, Radio, Card, Form } from "antd";
 import { postAxios } from "../lib/restAxios.js";
 import axios from "axios";
+import SignupResultPage from "./SignupResultPage.js";
 
 const SignupPage = () => {
   const [form] = Form.useForm();

@@ -1,4 +1,10 @@
-import { FormOutlined, HomeOutlined, SearchOutlined } from "@ant-design/icons";
+import {
+  FormOutlined,
+  HomeOutlined,
+  RightCircleOutlined,
+  SearchOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { getMenuItem } from "../lib/menuItem";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, Layout, theme } from "antd";
@@ -13,8 +19,10 @@ const MySider = () => {
     getMenuItem(
       <Link to="testPage">테스트페이지</Link>,
       "testPage",
-      <FormOutlined />
+      <RightCircleOutlined />
     ),
+    getMenuItem(<Link to="profile">프로필</Link>, "profile", <UserOutlined />),
+    getMenuItem(<Link to="login">로그인</Link>, "login", <UserOutlined />),
   ];
   const [collapsed, setCollapsed] = useState(false);
   const {
