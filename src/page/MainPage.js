@@ -7,7 +7,14 @@ const MainPage = () => {
   const [lastId, setLastId] = useState(null);
   useEffect(() => {
     getAxios("/post/all", { lastId }).then((data) => {
-      setPosts((pref) => pref.concat(data));
+      console.log(data);
+      setPosts((pref) =>
+        data.length !== 0 &&
+        (pref.length === 0 ||
+          pref[pref.length - 1].postId !== data[data.length - 1].postId)
+          ? pref.concat(data)
+          : pref
+      );
     });
   }, [lastId]);
   const addNextPage = () => {
