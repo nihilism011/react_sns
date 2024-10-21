@@ -9,3 +9,12 @@ export const postAxios = async (url, form) => {
     return false;
   }
 };
+export const getAxios = async (url, form = null) => {
+  try {
+    const { data } = await axios.get(url, { params: form });
+    return data;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};

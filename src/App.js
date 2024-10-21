@@ -4,7 +4,7 @@ import TestPage from "./page/TestPage.js";
 import NotFound from "./page/NotFound.js";
 import TestUserTable from "./page/TestUserTable.js";
 import SignupPage from "./page/SignupPage.js";
-import HomePage from "./page/HomePage";
+import MainPage from "./page/MainPage.js";
 import ProfilePage from "./page/ProfilePage.js";
 import { Layout } from "antd";
 import MySider from "./components/MySider.js";
@@ -26,7 +26,7 @@ function App() {
             <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/home" element={<HomePage />} />
+              <Route path="/home" element={<MainPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/three" element={<TestUserTable id={1} />} />
               <Route path="/testPage" element={<TestPage />} />

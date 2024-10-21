@@ -46,7 +46,7 @@ const SignupPage = () => {
             { max: 20, message: "패스워드는 20자 이하로 입력해주세요" },
           ]}
         >
-          <Input />
+          <Input.Password />
         </Form.Item>
         <Form.Item
           label="비밀번호 확인"
@@ -66,7 +66,7 @@ const SignupPage = () => {
             }),
           ]}
         >
-          <Input />
+          <Input.Password />
         </Form.Item>
         <Form.Item label="이름" name="userName" rules={[{ required: true }]}>
           <Input />
