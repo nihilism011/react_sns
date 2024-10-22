@@ -5,24 +5,23 @@ import {
   SearchOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import { jwtDecode } from "jwt-decode";
 import { getMenuItem } from "../lib/menuItem";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, Layout, theme } from "antd";
-import React, { useState } from "react";
+import { Menu, Layout, theme, Space } from "antd";
+import React, { useEffect, useState } from "react";
 const { Sider } = Layout;
 
 const MySider = () => {
   const items = [
-    getMenuItem(<Link to="home">Home</Link>, "home", <HomeOutlined />),
-    getMenuItem("Search", "Search", <SearchOutlined />),
-    getMenuItem(<Link to="signup">회원가입</Link>, "signup", <FormOutlined />),
+    getMenuItem(<Link to="/">Home</Link>, "home", <HomeOutlined />),
+    getMenuItem(<Link>search</Link>, "search", <SearchOutlined />),
     getMenuItem(
       <Link to="testPage">테스트페이지</Link>,
       "testPage",
       <RightCircleOutlined />
     ),
     getMenuItem(<Link to="profile">프로필</Link>, "profile", <UserOutlined />),
-    getMenuItem(<Link to="login">로그인</Link>, "login", <UserOutlined />),
   ];
   const [collapsed, setCollapsed] = useState(false);
   const {
@@ -35,7 +34,10 @@ const MySider = () => {
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
     >
-      <div className="demo-logo-vertical" />
+      <div>
+        <Space>asdf</Space>
+      </div>
+      {/* <div className="demo-logo-vertical" /> */}
       <Menu
         theme="dark"
         selectedKeys={[urlObj.pathname.replace("/", "").replace(/\/.+/, "")]}

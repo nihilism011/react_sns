@@ -1,5 +1,7 @@
 import { Button, Card, Input, Radio, Space, Layout } from "antd";
 import React, { useState, useEffect, useRef } from "react";
+import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 const calcul = (obj) => {
   if (obj.calc === "+") {
     return +obj.num1 + +obj.num2;
@@ -16,6 +18,16 @@ const calcul = (obj) => {
   return null;
 };
 function TestPage() {
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      console.log();
+      const decoded = jwtDecode(token);
+      console.log(decoded);
+      axios.get("/test/tokenTest", { headers: { token: token } });
+    }
+  }, []);
+
   const [answer, setAnswer] = useState(null);
   const numRef = useRef({ num1: null, num2: null, calc: null });
 
