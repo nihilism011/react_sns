@@ -1,4 +1,4 @@
-import { Button, Layout } from "antd";
+import { Button, Layout, Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import { getAxios } from "../lib/restAxios";
 import Post from "../components/Post";
@@ -7,7 +7,7 @@ const MainPage = () => {
   const [posts, setPosts] = useState([]);
   const [lastId, setLastId] = useState(null);
   useEffect(() => {
-    getAxios("/post/all", { lastId }).then((data) => {
+    getAxios("/post/addPost", { lastId }).then((data) => {
       setPosts((pref) =>
         data.length !== 0 &&
         (pref.length === 0 ||
@@ -21,7 +21,7 @@ const MainPage = () => {
     setLastId(posts[posts.length - 1].postId);
   };
   if (posts.length === 0) {
-    return <>로딩중</>;
+    return <Spin></Spin>;
   }
   return (
     <Layout>

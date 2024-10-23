@@ -7,7 +7,7 @@ const Post = ({ post }) => {
   return (
     <Card>
       <Flex vertical>
-        <Flex>
+        <Flex vertical>
           <ProfileImgName
             userId={post.id}
             profileImg={post.profileImg}

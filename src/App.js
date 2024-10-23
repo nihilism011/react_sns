@@ -7,18 +7,17 @@ import SignupPage from "./page/SignupPage.js";
 import MainPage from "./page/MainPage.js";
 import ProfilePage from "./page/ProfilePage.js";
 import { Layout } from "antd";
-import MySider from "./components/MySider.js";
+import MySider from "./components/MySider";
 import { Content } from "antd/es/layout/layout.js";
 import LoginPage from "./page/LoginPage.jsx";
 import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import "./App.css";
+import { useRecoilState } from "recoil";
+import { loginUserId } from "./lib/atom.js";
 
 function App() {
-  const [user, setUser] = useState(() => {
-    const token = sessionStorage.getItem("token");
-    return token ? jwtDecode(token) : null;
-  });
+  const [user, setUser] = useRecoilState(loginUserId);
   if (!user) {
     return (
       <div

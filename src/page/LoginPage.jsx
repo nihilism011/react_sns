@@ -1,4 +1,4 @@
-import { Button, Input, Space, Modal, Card, Flex } from "antd";
+import { Button, Input, Modal, Card, Flex } from "antd";
 import logo from "../logo.svg";
 import axios from "axios";
 import React, { useRef, useState } from "react";
@@ -34,7 +34,7 @@ const LoginPage = ({ loginSet }) => {
     });
   };
   return (
-    <div>
+    <div className="loginContainer">
       <div className="cardContainer">
         <Card className="loginCard">
           <Flex vertical>

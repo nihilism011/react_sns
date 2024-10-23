@@ -1,18 +1,18 @@
 import {
-  FormOutlined,
   HomeOutlined,
   RightCircleOutlined,
   SearchOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { jwtDecode } from "jwt-decode";
 import { getMenuItem } from "../lib/menuItem";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, Layout, theme, Space } from "antd";
-import React, { useEffect, useState } from "react";
+import { Menu, Layout, theme, Space, Button } from "antd";
+import React, { useState } from "react";
+import PostWrite from "../modal/PostWrite";
 const { Sider } = Layout;
 
 const MySider = () => {
+  const [PostWriteFlg, setPostWriteFlg] = useState(false);
   const items = [
     getMenuItem(<Link to="/">Home</Link>, "home", <HomeOutlined />),
     getMenuItem(<Link>search</Link>, "search", <SearchOutlined />),
@@ -20,6 +20,17 @@ const MySider = () => {
       <Link to="testPage">테스트페이지</Link>,
       "testPage",
       <RightCircleOutlined />
+    ),
+    getMenuItem(
+      <Link
+        onClick={() => {
+          setPostWriteFlg(true);
+        }}
+      >
+        글쓰기
+      </Link>,
+      "postWrite",
+      <UserOutlined />
     ),
     getMenuItem(<Link to="profile">프로필</Link>, "profile", <UserOutlined />),
   ];
@@ -37,13 +48,14 @@ const MySider = () => {
       <div>
         <Space>asdf</Space>
       </div>
-      {/* <div className="demo-logo-vertical" /> */}
+      <div className="demo-logo-vertical" />
       <Menu
         theme="dark"
         selectedKeys={[urlObj.pathname.replace("/", "").replace(/\/.+/, "")]}
         mode="inline"
         items={items}
       />
+      <PostWrite flg={PostWriteFlg} setFlg={setPostWriteFlg}></PostWrite>
     </Sider>
   );
 };

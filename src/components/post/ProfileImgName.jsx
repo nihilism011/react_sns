@@ -1,13 +1,13 @@
-import { Avatar } from "antd";
+import { Avatar, Flex } from "antd";
 import React from "react";
 
 const ProfileImgName = (userInfo) => {
   console.log(userInfo);
   return (
-    <div>
+    <Flex align="center">
       <Avatar></Avatar>
       <div>{userInfo.userName}</div>
-    </div>
+    </Flex>
   );
 };
 

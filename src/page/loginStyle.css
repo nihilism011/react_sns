@@ -10,3 +10,9 @@
   align-content: center;
   justify-content: center;
 }
+.loginContainer {
+  display: flex;
+  height: 100vh;
+  align-content: center;
+  justify-content: center;
+}
