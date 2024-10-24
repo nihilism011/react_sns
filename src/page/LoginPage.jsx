@@ -5,7 +5,7 @@ import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import "./loginStyle.css";
-const LoginPage = ({ loginSet }) => {
+const LoginPage = () => {
   // sessionStorage.removeItem("token");
   const navigate = useNavigate();
   const [modal, setModal] = useState({ status: false, massage: "" });
@@ -14,10 +14,8 @@ const LoginPage = ({ loginSet }) => {
     const url = "/user/login";
     axios.post(url, userIdRef.current).then(({ data }) => {
       if (data.state) {
-        console.log(data);
         sessionStorage.setItem("token", data.token);
-        loginSet(jwtDecode(data.token));
-        navigate("/");
+        window.location.reload(true);
       } else {
         if (data.reason === "id") {
           setModal({

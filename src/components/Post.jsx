@@ -13,6 +13,7 @@ const Post = ({ post }) => {
             profileImg={post.profileImg}
             userName={post.userName}
           ></ProfileImgName>
+          (나중 삭제)포스트아이디 : {post.postId}
           <MoreInfo></MoreInfo>
         </Flex>
       </Flex>

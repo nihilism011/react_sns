@@ -1,12 +1,14 @@
 import { Avatar, Flex } from "antd";
 import React from "react";
 
-const ProfileImgName = (userInfo) => {
+const ProfileImgName = ({ userInfo }) => {
   console.log(userInfo);
   return (
     <Flex align="center">
-      <Avatar></Avatar>
-      <div>{userInfo.userName}</div>
+      <Avatar src={`/profile/${userInfo.profileImg}`}></Avatar>
+      <div style={{ marginLeft: "10px", color: "#eee" }}>
+        {userInfo.userName}
+      </div>
     </Flex>
   );
 };
