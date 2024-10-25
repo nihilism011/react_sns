@@ -6,7 +6,6 @@ export const useTestUser = (id) => {
   const userId = id;
   const url = "https://jsonplaceholder.typicode.com/users";
   useEffect(() => {
-    console.log(userId);
     axios
       .get(url)
       .then(({ data }) => {

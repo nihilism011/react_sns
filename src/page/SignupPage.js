@@ -1,11 +1,25 @@
-import React from "react";
-import { Button, Input, Radio, Card, Form } from "antd";
+import React, { useState } from "react";
+import { Button, Input, Radio, Card, Form, Modal } from "antd";
 import { postAxios } from "../lib/restAxios.js";
 import axios from "axios";
-import SignupResultPage from "./SignupResultPage.js";
+import { useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
+  const [modal, setModal] = useState({
+    status: false,
+    massage: "",
+    title: "",
+    isOk: false,
+  });
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const modalInit = (modalCurrent) => {
+    if (modalCurrent.isOk) {
+      navigate("/login");
+    } else {
+      setModal({ title: "", status: false, massage: "", isOk: false });
+    }
+  };
   return (
     <Card title="회원 가입" bordered={false} style={{ width: 400 }}>
       <Form
@@ -13,7 +27,33 @@ const SignupPage = () => {
         form={form}
         onFinish={(e) => {
           console.log(e);
-          postAxios("/user/signup/submit", e);
+          postAxios("/user/signup/submit", e)
+            .then((data) => {
+              if (data) {
+                setModal({
+                  status: true,
+                  massage: "가입을 환영합니다.",
+                  title: "회원가입 완료",
+                  isOk: true,
+                });
+              } else {
+                setModal({
+                  status: true,
+                  massage: "양식을 확인해주세요",
+                  title: "회원가입 실패",
+                  isOk: false,
+                });
+              }
+            })
+            .catch((err) => {
+              setModal({
+                status: true,
+                massage: "서버가 불안정합니다. 다시 시도해 주세요.",
+                title: "회원가입 실패",
+                isOk: false,
+              });
+              console.log(err);
+            });
         }}
       >
         <Form.Item
@@ -96,6 +136,28 @@ const SignupPage = () => {
           </Button>
         </Form.Item>
       </Form>
+      <Modal
+        title={modal.title}
+        open={modal.status}
+        footer={
+          <Button
+            type="primary"
+            onClick={() => {
+              modalInit(modal);
+            }}
+          >
+            확인
+          </Button>
+        }
+        onOk={() => {
+          modalInit(modal);
+        }}
+        onCancel={() => {
+          modalInit(modal);
+        }}
+      >
+        <p>{modal.massage}</p>
+      </Modal>
     </Card>
   );
 };

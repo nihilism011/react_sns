@@ -1,7 +1,7 @@
 import { Button, Layout, Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import { getAxios } from "../lib/restAxios";
-import Post from "../components/Post";
+import Post from "../components/post/Post";
 
 const MainPage = () => {
   const [posts, setPosts] = useState([]);

@@ -21,7 +21,7 @@ const ProfileInfo = () => {
             <Avatar
               size={128}
               style={{ marginBottom: 10 }}
-              src={`/profile/${userInfo.profileImg}`}
+              src={`/profile/${userInfo.profileImg ?? "non.png"}`}
             />
             <Button>프로필 이미지 변경</Button>
           </Flex>

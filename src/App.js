@@ -45,25 +45,29 @@ function App() {
           minHeight: "100vh",
         }}
       >
-        <MySider />
-        <Content>
-          {userId ? (
-            <Routes>
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/" element={<MainPage />} />
-              <Route path="/three" element={<TestUserTable id={1} />} />
-              <Route path="/testPage" element={<TestPage />} />
-              <Route path="/update/:userId" element={<UserUpdatePage />} />
-              <Route path="*" element={<MainPage />} />
-            </Routes>
-          ) : (
+        {userId ? (
+          <>
+            <MySider />
+            <Content>
+              <Routes>
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/" element={<MainPage />} />
+                <Route path="/three" element={<TestUserTable id={1} />} />
+                <Route path="/testPage" element={<TestPage />} />
+                <Route path="/update/:userId" element={<UserUpdatePage />} />
+                <Route path="*" element={<MainPage />} />
+              </Routes>
+            </Content>
+          </>
+        ) : (
+          <Content>
             <Routes>
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="*" element={<LoginPage />} />
             </Routes>
-          )}
-        </Content>
+          </Content>
+        )}
       </Layout>
     </div>
   );

@@ -2,12 +2,9 @@ import { Button, Input, Modal, Card, Flex } from "antd";
 import logo from "../logo.svg";
 import axios from "axios";
 import React, { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
+import { Link } from "react-router-dom";
 import "./loginStyle.css";
 const LoginPage = () => {
-  // sessionStorage.removeItem("token");
-  const navigate = useNavigate();
   const [modal, setModal] = useState({ status: false, massage: "" });
   const userIdRef = useRef({ inputId: "", inputPwd: "" });
   const fnLogin = () => {
@@ -41,12 +38,18 @@ const LoginPage = () => {
             </Link>
             <Input
               placeholder="id"
+              onPressEnter={() => {
+                fnLogin(userIdRef.current);
+              }}
               onChange={(e) => {
                 userIdRef.current.inputId = e.target.value;
               }}
             ></Input>
             <Input
               placeholder="password"
+              onPressEnter={() => {
+                fnLogin(userIdRef.current);
+              }}
               onChange={(e) => {
                 userIdRef.current.inputPwd = e.target.value;
               }}
