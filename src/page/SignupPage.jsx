@@ -27,7 +27,7 @@ const SignupPage = () => {
         form={form}
         onFinish={(e) => {
           console.log(e);
-          postAxios("/user/signup/submit", e)
+          postAxios("/nonAuth/signup/submit", e)
             .then((data) => {
               if (data) {
                 setModal({
@@ -64,7 +64,7 @@ const SignupPage = () => {
             { required: true },
             () => ({
               validator: async (_, value) => {
-                const { data } = await axios.get("/user/idCheck", {
+                const { data } = await axios.get("/nonAuth/signup/idCheck", {
                   params: { id: value },
                 });
                 if (data) return Promise.resolve();

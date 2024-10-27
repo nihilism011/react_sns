@@ -8,7 +8,7 @@ const LoginPage = () => {
   const [modal, setModal] = useState({ status: false, massage: "" });
   const userIdRef = useRef({ inputId: "", inputPwd: "" });
   const fnLogin = () => {
-    const url = "/user/login";
+    const url = "/nonAuth/login";
     axios.post(url, userIdRef.current).then(({ data }) => {
       if (data.state) {
         sessionStorage.setItem("token", data.token);

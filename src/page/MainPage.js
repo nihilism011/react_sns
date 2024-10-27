@@ -7,7 +7,7 @@ const MainPage = () => {
   const [posts, setPosts] = useState([]);
   const [lastId, setLastId] = useState(null);
   useEffect(() => {
-    getAxios("/post/addPost", { lastId }).then((data) => {
+    getAxios("/post/lastFivePostToId", { lastId }).then((data) => {
       setPosts((pref) =>
         data.length !== 0 &&
         (pref.length === 0 ||

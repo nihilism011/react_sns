@@ -1,5 +1,9 @@
-import axios from "axios";
+import originAxios from "axios";
 
+const axios = originAxios.create({
+  baseURL: "/api/",
+  headers: { token: sessionStorage.getItem("token") },
+});
 export const postAxios = async (url, form) => {
   try {
     const { data } = await axios.post(url, form);

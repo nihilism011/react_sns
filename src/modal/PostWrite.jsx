@@ -14,7 +14,7 @@ import ProfileImgName from "../components/post/ProfileImgName";
 import { useRecoilValue } from "recoil";
 import { loginUserId } from "../lib/atom";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import axios from "axios";
+import { postAxios } from "../lib/restAxios";
 
 const PostWrite = ({ flg, setFlg }) => {
   const [confirm, setConfirm] = useState(false);
@@ -64,22 +64,23 @@ const PostWrite = ({ flg, setFlg }) => {
       </div>
     </button>
   );
-  const handleUpload = async () => {
+  const handleUpload = () => {
     const formData = new FormData();
     fileList.forEach((file) => {
       formData.append("photos", file.originFileObj);
     });
     formData.append("userId", userInfo.id);
     formData.append("content", content);
-    const response = await axios.post("/post/addPost", formData, {
+    postAxios("/post", formData, {
       headers: { "Content-Type": "multipart/form-data" },
+    }).then((data) => {
+      if (data) {
+        message.success("게시글을 공유 하였습니다.");
+        setInit();
+      } else {
+        message.error("서버 이상!");
+      }
     });
-    if (response.data) {
-      message.success("게시글을 공유 하였습니다.");
-      setInit();
-    } else {
-      message.error("서버 이상!");
-    }
   };
 
   return (

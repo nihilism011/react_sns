@@ -1,9 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import UserUpdatePage from "./page/user-update.js";
 import TestPage from "./page/TestPage.js";
-import NotFound from "./page/NotFound.js";
 import TestUserTable from "./page/TestUserTable.js";
-import SignupPage from "./page/SignupPage.js";
+import SignupPage from "./page/SignupPage";
 import MainPage from "./page/MainPage.js";
 import ProfilePage from "./page/ProfilePage";
 import { Layout, Spin } from "antd";
@@ -18,6 +17,7 @@ import { loginUserId } from "./lib/atom.js";
 import { userDecode } from "./lib/userDecode.js";
 import axios from "axios";
 import LoadingPage from "./page/LoadingPage.jsx";
+import { getAxios } from "./lib/restAxios.js";
 
 function App() {
   const token = sessionStorage.getItem("token");
@@ -25,15 +25,11 @@ function App() {
   const [user, setUser] = useRecoilState(loginUserId);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios
-      .get(`/user/selectUser/${userId}`)
-      .then(({ data }) => {
-        setUser(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    getAxios(`user/${userId}`).then((data) => {
+      if (data.err) setUser(null);
+      else setUser(data);
+      setLoading(false);
+    });
   }, [userId]);
   if (loading) {
     return <LoadingPage />;
@@ -45,7 +41,7 @@ function App() {
           minHeight: "100vh",
         }}
       >
-        {userId ? (
+        {user ? (
           <>
             <MySider />
             <Content>
