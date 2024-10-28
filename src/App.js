@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import UserUpdatePage from "./page/user-update.js";
-import TestPage from "./page/TestPage.js";
+import TestPage from "./page/PostPage.jsx";
 import TestUserTable from "./page/TestUserTable.js";
 import SignupPage from "./page/SignupPage";
 import MainPage from "./page/MainPage.js";

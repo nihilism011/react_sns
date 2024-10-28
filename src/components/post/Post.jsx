@@ -8,7 +8,7 @@ const Post = ({ post }) => {
   return (
     <Card
       style={{
-        width: 400,
+        width: 500,
         borderRadius: 8,
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
         padding: 16,

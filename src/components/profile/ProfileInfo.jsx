@@ -1,13 +1,34 @@
 import { Avatar, Button, Col, Flex, message, Row, Upload } from "antd";
 import React, { useState } from "react";
-import { getAxios } from "../../lib/restAxios";
+import { getAxios, postAxios } from "../../lib/restAxios";
 import { useRecoilState } from "recoil";
 import { loginUserId } from "../../lib/atom";
-
+import { useNavigate } from "react-router-dom";
 const ProfileInfo = () => {
   const [userInfo, setUserInfo] = useRecoilState(loginUserId);
   const colStyle = {
     textAlign: "left",
+  };
+  const navigate = useNavigate();
+  const logOut = () => {
+    sessionStorage.removeItem("token");
+    setUserInfo(null);
+    navigate("/");
+  };
+  const handleProfileImg = (e) => {
+    const image = Array.from(e.target.files);
+    const formData = new FormData();
+    image.forEach((img) => {
+      formData.append("profiles", img);
+    });
+    formData.append("userId", userInfo.id);
+    formData.append("profileId", userInfo.userId);
+    postAxios("/user/profileChange", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    }).then((data) => {
+      message.success("프로필사진을 변경하였습니다.");
+      console.log(userInfo);
+    });
   };
   return (
     <>
@@ -23,19 +44,34 @@ const ProfileInfo = () => {
               style={{ marginBottom: 10 }}
               src={`/profile/${userInfo.profileImg ?? "non.png"}`}
             />
-            <Button>프로필 이미지 변경</Button>
+            <label htmlFor="profileChange">
+              <div
+                style={{
+                  border: "1px solid black",
+                  borderRadius: "5px",
+                  padding: 5,
+                }}
+              >
+                프로필 이미지 변경
+              </div>
+            </label>
+            <input
+              id="profileChange"
+              type="file"
+              style={{ display: "none" }}
+              onChange={handleProfileImg}
+            />
           </Flex>
         </Col>
         <Col span={16}>
           <Row justify="start" align="middle">
-            <Col span={5} style={colStyle}>
+            <Col span={6} style={colStyle}>
               {userInfo.userId}
             </Col>
             <Col span={6} style={colStyle}>
-              <Button>프로필 편집</Button>
-            </Col>
-            <Col span={6} style={colStyle}>
-              <Button>정보 수정</Button>
+              <Button type="primary" onClick={logOut}>
+                로그 아웃
+              </Button>
             </Col>
           </Row>
           <Row justify="start" align="middle" style={{ marginTop: 15 }}>

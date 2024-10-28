@@ -1,0 +1,158 @@
+/* div {
+  border: 1px solid black;
+} */
+.writeContainer {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+}
+.writeHeader {
+  justify-content: center;
+  align-content: center;
+  height: 10%;
+}
+.writeContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90%;
+}
+.writePhotoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  height: 500px;
+}
+.writeUserInput {
+  width: 35%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+.writeUserInfo {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  justify-content: start;
+  align-items: center;
+}
+.writeTextAreaDiv {
+  border-radius: 8px;
+  width: 100%;
+  height: 70%;
+}
+.writeTextArea {
+  width: 100%;
+  font-size: 20px;
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 8px;
+  height: 100%;
+  resize: none;
+}
+.submitButtonArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+}
+.btn-upload {
+  margin: 5px 5px;
+  width: 400px;
+  height: 400px;
+  color: #222;
+  background: #eee;
+  border: 2px dotted rgb(77, 77, 77);
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: #fff;
+    border: 2px dotted rgb(47, 47, 255);
+  }
+}
+.btn-uploadAdd {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  color: #222;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.8;
+    background: #fff;
+  }
+}
+.addUpLoadDiv {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#imgFile,
+#videoFile {
+  display: none;
+}
+.image-slider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.image-slider button {
+  margin: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.imgBox {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+}
+.image-slider img {
+  max-width: 100%;
+  max-height: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.slideImage {
+  max-width: 100%;
+  max-height: 100%;
+}
+.imgSliderContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+.imgState {
+  font-size: 20px;
+}
+.imgRemoveButton {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  opacity: 0.4;
+  &:hover {
+    opacity: 1;
+  }
+}

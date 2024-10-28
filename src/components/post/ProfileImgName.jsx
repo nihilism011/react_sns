@@ -6,9 +6,7 @@ const ProfileImgName = ({ userInfo }) => {
   return (
     <Flex align="center">
       <Avatar src={`/profile/${userInfo.profileImg ?? "non.png"}`}></Avatar>
-      <div style={{ marginLeft: "10px", color: "#eee" }}>
-        {userInfo.userName}
-      </div>
+      <div style={{ marginLeft: "10px" }}>{userInfo.userName}</div>
     </Flex>
   );
 };

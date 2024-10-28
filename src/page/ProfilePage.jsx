@@ -16,7 +16,6 @@ const ProfilePage = () => {
   ];
   const [whoPosts, setWho] = useState("my");
   const [userInfo, setUserInfo] = useRecoilState(loginUserId);
-
   return (
     <Flex vertical>
       <ProfileInfo />
