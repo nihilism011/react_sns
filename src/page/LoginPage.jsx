@@ -3,7 +3,7 @@ import logo from "../logo.svg";
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import "./loginStyle.css";
+import "../styles/loginStyle.css";
 const LoginPage = () => {
   const [modal, setModal] = useState({ status: false, massage: "" });
   const userIdRef = useRef({ inputId: "", inputPwd: "" });

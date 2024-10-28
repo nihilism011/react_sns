@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { loginUserId } from "../../lib/atom";
 import { getAxios } from "../../lib/restAxios";
-import "../../styles/myPosts.css";
-import { LikeOutlined } from "@ant-design/icons";
+
+import PhotoPost from "../post/PhotoPost";
 
 const MyPosts = () => {
   const user = useRecoilValue(loginUserId);
@@ -14,30 +14,13 @@ const MyPosts = () => {
       setPost(data);
     });
   }, []);
-  const postView = (postId) => {
-    console.log("임시", postId);
-    console.log(post);
-  };
+
   console.log(post);
   return (
-    <div className="myPostPhotos">
+    <div style={{ display: "flex", width: "100%" }}>
       <Flex>
         {post.map((item, index) => (
-          <div key={index} className="myPostsImgBox">
-            <img
-              className="myPostsImg"
-              alt={index}
-              src={`/static/${item.imageName}`}
-            />
-            <div
-              className="likeCntBox"
-              onClick={() => {
-                postView(item.postId);
-              }}
-            >
-              <LikeOutlined />
-            </div>
-          </div>
+          <PhotoPost key={index} postInfo={item} />
         ))}
       </Flex>
     </div>
