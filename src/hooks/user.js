@@ -11,7 +11,6 @@ export const useUser = (userId) => {
       .get(url)
       .then(({ data }) => {
         const { id, name, createdAt } = data[0];
-        console.log({ id, name, createdAt });
         setTestUser({
           id: id,
           name: name,

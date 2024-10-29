@@ -27,7 +27,6 @@ const ProfileInfo = () => {
       headers: { "Content-Type": "multipart/form-data" },
     }).then((data) => {
       message.success("프로필사진을 변경하였습니다.");
-      console.log(userInfo);
     });
   };
   return (

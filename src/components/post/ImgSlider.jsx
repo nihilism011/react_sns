@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Carousel, Image } from "antd";
 
 const ImgSlider = ({ imgList }) => {
-  if (imgList.length === 0) {
+  const [imgLists, setImgLists] = useState(imgList);
+  if (imgLists.length === 0) {
     return null;
   }
   const imageStyle = {
@@ -10,7 +11,6 @@ const ImgSlider = ({ imgList }) => {
     height: "400px", // 이미지 높이를 400px로 키움
     objectFit: "cover",
   };
-
   const slideStyle = {
     textAlign: "center",
     lineHeight: "400px",
@@ -18,7 +18,7 @@ const ImgSlider = ({ imgList }) => {
   };
   return (
     <Carousel arrows infinite={false}>
-      {imgList.map((imgName, index) => (
+      {imgLists.map((imgName, index) => (
         <div key={imgName} style={slideStyle}>
           <Image
             alt={`Slide ${index + 1}`}

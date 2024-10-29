@@ -15,8 +15,8 @@ const MySider = () => {
     getMenuItem(<Link to="/">Home</Link>, "home", <HomeOutlined />),
     getMenuItem(<Link>search</Link>, "search", <SearchOutlined />),
     getMenuItem(
-      <Link to="testPage">글쓰기</Link>,
-      "testPage",
+      <Link to="PostPage">글쓰기</Link>,
+      "PostPage",
       <RightCircleOutlined />
     ),
     getMenuItem(<Link to="profile">프로필</Link>, "profile", <UserOutlined />),
@@ -28,6 +28,7 @@ const MySider = () => {
   const urlObj = useLocation();
   return (
     <Sider
+      style={{ position: "fixed", height: "100vh" }}
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}

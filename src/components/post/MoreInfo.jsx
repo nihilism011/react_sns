@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Space, Typography } from "antd";
+import Comment from "./Comment";
 const { Text } = Typography;
 
-const MoreInfo = ({ postInfo }) => {
-  console.log("포스트 인포", postInfo);
+const MoreInfo = ({ postInfo, setCommentCnt }) => {
+  const [modal, setModal] = useState(false);
+  const dialogRef = useRef();
+  const handleOpenModal = () => {
+    dialogRef.current.showModal();
+  };
   return (
     <Space direction="vertical" style={{ width: "100%" }}>
       <Text>{postInfo.content}</Text>
-      <Space>
-        <Text strong>좋아요 {postInfo.likeCnt}개</Text>
-        <Text type="secondary">댓글 {postInfo.commentCnt}개</Text>
-      </Space>
+      <Comment postInfo={postInfo} setCommentCnt={setCommentCnt} />
     </Space>
   );
 };

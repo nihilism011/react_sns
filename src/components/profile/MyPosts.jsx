@@ -15,7 +15,6 @@ const MyPosts = () => {
     });
   }, []);
 
-  console.log(post);
   return (
     <div style={{ display: "flex", width: "100%" }}>
       <Flex>

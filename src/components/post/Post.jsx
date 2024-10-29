@@ -3,8 +3,10 @@ import { Card, Divider } from "antd";
 import ProfileImgName from "./ProfileImgName.jsx";
 import MoreInfo from "./MoreInfo.jsx";
 import ImgSlider from "./ImgSlider.jsx";
+import LikeBtn from "../LikeBtn.jsx";
+import CommentBtn from "../CommentBtn.jsx";
 const Post = ({ post }) => {
-  console.log("포스트", post);
+  const [commentCnt, setCommentCnt] = useState(post.commentCnt);
   return (
     <Card
       style={{
@@ -22,7 +24,11 @@ const Post = ({ post }) => {
       <Divider style={{ margin: "8px 0" }} />
       <ImgSlider imgList={post.imgName} />
       <Divider style={{ margin: "8px 0" }} />
-      <MoreInfo postInfo={post} />
+      <div style={{ display: "flex" }}>
+        <LikeBtn postId={post.postId} likeCnt={post.likeCnt} />
+        <CommentBtn postId={post.postId} commentCnt={commentCnt} />
+      </div>
+      <MoreInfo postInfo={post} setCommentCnt={setCommentCnt} />
     </Card>
   );
 };

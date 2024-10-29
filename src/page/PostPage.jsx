@@ -21,7 +21,6 @@ const PostPage = () => {
   };
   const handleImageUpload = (event) => {
     const selectedFiles = Array.from(event.target.files);
-    console.log(selectedFiles.length + files.length);
     if (selectedFiles.length + files.length > 12) {
       message.error("이미지는 최대 12개까지 업로드 할 수 있습니다.");
       return;

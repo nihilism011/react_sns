@@ -2,7 +2,6 @@ import { Avatar, Flex } from "antd";
 import React from "react";
 
 const ProfileImgName = ({ userInfo }) => {
-  // console.log(userInfo);
   return (
     <Flex align="center">
       <Avatar

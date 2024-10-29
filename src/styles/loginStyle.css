@@ -16,3 +16,6 @@
   align-content: center;
   justify-content: center;
 }
+.loginInput {
+  margin: 5px 0;
+}

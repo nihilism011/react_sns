@@ -37,6 +37,8 @@ const LoginPage = () => {
               <img alt="alt" src={logo} />
             </Link>
             <Input
+              className="loginInput"
+              size="large"
               placeholder="id"
               onPressEnter={() => {
                 fnLogin(userIdRef.current);
@@ -46,7 +48,10 @@ const LoginPage = () => {
               }}
             ></Input>
             <Input
+              className="loginInput"
+              size="large"
               placeholder="password"
+              type="password"
               onPressEnter={() => {
                 fnLogin(userIdRef.current);
               }}

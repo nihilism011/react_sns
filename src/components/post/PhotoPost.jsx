@@ -9,9 +9,7 @@ const PhotoPost = ({ postInfo }) => {
       setPostCntInfo(data);
     });
   }, [postInfo]);
-  const postView = (postId) => {
-    console.log("임시", postId);
-  };
+  const postView = (postId) => {};
   return (
     <div className="myPostsImgBox">
       <img
