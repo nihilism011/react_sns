@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
-import { loginUserId } from "../lib/atom";
-import { useRecoilValue } from "recoil";
 import { getAxios, postAxios } from "../lib/restAxios";
-const LikeBtn = ({ postId, likeCnt }) => {
+const LikeBtn = ({ postId, size = 20 }) => {
   const [isLike, setIsLike] = useState(false);
-  const [likeCount, setLikeCount] = useState(likeCnt);
+  const [likeCount, setLikeCount] = useState(0);
   useEffect(() => {
-    getAxios("/post/postLike", { postId: postId }).then((data) => {
+    const isLikeUrl = "/post/postLike";
+    const likeCntUrl = "/post/getLikeCnt";
+    getAxios(isLikeUrl, { postId: postId }).then((data) => {
       setIsLike(data);
+    });
+    getAxios(likeCntUrl, { postId: postId }).then((data) => {
+      setLikeCount(data);
     });
   }, [postId]);
   const handleLike = () => {
@@ -27,13 +30,13 @@ const LikeBtn = ({ postId, likeCnt }) => {
   };
   if (isLike) {
     return (
-      <div style={{ fontSize: 20 }}>
+      <div style={{ fontSize: size }}>
         <HeartFilled onClick={handleLike} /> {likeCount}
       </div>
     );
   } else {
     return (
-      <div style={{ fontSize: 20 }}>
+      <div style={{ fontSize: size }}>
         <HeartOutlined onClick={handleLike} /> {likeCount}
       </div>
     );

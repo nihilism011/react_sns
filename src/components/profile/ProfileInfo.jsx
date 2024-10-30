@@ -1,6 +1,6 @@
 import { Avatar, Button, Col, Flex, message, Row, Upload } from "antd";
 import React, { useState } from "react";
-import { getAxios, postAxios } from "../../lib/restAxios";
+import { postAxios } from "../../lib/restAxios";
 import { useRecoilState } from "recoil";
 import { loginUserId } from "../../lib/atom";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,7 @@ const ProfileInfo = () => {
     setUserInfo(null);
     navigate("/");
   };
+  console.log(userInfo);
   const handleProfileImg = (e) => {
     const image = Array.from(e.target.files);
     const formData = new FormData();

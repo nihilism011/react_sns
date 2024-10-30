@@ -27,7 +27,9 @@ const SignupPage = () => {
           layout="vertical"
           form={form}
           onFinish={(e) => {
-            postAxios("/nonAuth/signup/submit", e)
+            console.log(e);
+            axios
+              .post("/nonAuth/signup/submit", e)
               .then((data) => {
                 if (data) {
                   setModal({
@@ -80,6 +82,7 @@ const SignupPage = () => {
           <Form.Item
             label="비밀번호"
             name="password"
+            validateDebounce={1000}
             rules={[
               { required: true },
               { min: 4, message: "패스워드는 4자 이상 입력해주세요." },
@@ -91,6 +94,7 @@ const SignupPage = () => {
           <Form.Item
             label="비밀번호 확인"
             name="pwdCheck"
+            validateDebounce={1000}
             dependencies={["password"]}
             rules={[
               { required: true },
@@ -132,6 +136,15 @@ const SignupPage = () => {
           <Form.Item>
             <Button type="primary" htmlType="submit">
               회원 가입
+            </Button>
+            <Button
+              style={{ marginLeft: 5 }}
+              htmlType="button"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              로그인
             </Button>
           </Form.Item>
         </Form>

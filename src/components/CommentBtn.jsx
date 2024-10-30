@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { HeartOutlined, HeartFilled, MessageOutlined } from "@ant-design/icons";
-const CommentBtn = ({ postId, commentCnt }) => {
-  const [com, setCom] = useState(commentCnt);
+import { getAxios } from "../lib/restAxios";
+const CommentBtn = ({ postId, size = 20, onClick }) => {
+  const [comment, setComment] = useState(0);
   useEffect(() => {
-    setCom(commentCnt);
-  }, [commentCnt]);
-  const [modal, setModal] = useState(false);
-  const modalOpen = () => {
-    setModal(true);
-  };
+    const url = "/post/commentCnt";
+    getAxios(url, { postId: postId }).then((cnt) => {
+      setComment(cnt);
+    });
+  }, [postId]);
+
   return (
-    <div style={{ fontSize: 20 }}>
-      <MessageOutlined onClick={modalOpen} /> {com}
+    <div onClick={onClick} style={{ fontSize: size, cursor: "pointer" }}>
+      <MessageOutlined /> {comment}
     </div>
   );
 };

@@ -5,8 +5,22 @@ import MoreInfo from "./MoreInfo.jsx";
 import ImgSlider from "./ImgSlider.jsx";
 import LikeBtn from "../LikeBtn.jsx";
 import CommentBtn from "../CommentBtn.jsx";
+import CommentModal from "../modal/CommentModal.jsx";
 const Post = ({ post }) => {
-  const [commentCnt, setCommentCnt] = useState(post.commentCnt);
+  const modalState = useState(false);
+  function timeAgo(createdAt) {
+    const createdDate = new Date(createdAt);
+    const now = new Date();
+
+    const hoursDiff = Math.floor((now - createdDate) / (1000 * 60 * 60));
+    const daysDiff = Math.floor(hoursDiff / 24);
+
+    if (daysDiff === 0) {
+      return `${hoursDiff}시간 전`;
+    } else {
+      return `${daysDiff}일 전`;
+    }
+  }
   return (
     <Card
       style={{
@@ -16,19 +30,34 @@ const Post = ({ post }) => {
         padding: 16,
       }}
     >
-      <div style={{ paddingBottom: 8 }}>
+      <div
+        style={{
+          paddingBottom: 8,
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
         <ProfileImgName
           userInfo={{ profileImg: post.profileImg, userName: post.userName }}
         />
+        <div style={{ color: "#555" }}>{timeAgo(post.created_at)}</div>
       </div>
       <Divider style={{ margin: "8px 0" }} />
       <ImgSlider imgList={post.imgName} />
-      <Divider style={{ margin: "8px 0" }} />
       <div style={{ display: "flex" }}>
-        <LikeBtn postId={post.postId} likeCnt={post.likeCnt} />
-        <CommentBtn postId={post.postId} commentCnt={commentCnt} />
+        <LikeBtn postId={post.postId} size={20} />
+        &nbsp;
+        <CommentBtn
+          onClick={() => {
+            modalState[1](true);
+          }}
+          postId={post.postId}
+          size={20}
+        />
       </div>
-      <MoreInfo postInfo={post} setCommentCnt={setCommentCnt} />
+      <div>{post.content}</div>
+      <CommentModal postId={post.postId} state={modalState}></CommentModal>
     </Card>
   );
 };

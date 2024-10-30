@@ -41,14 +41,16 @@ function App() {
         {user ? (
           <>
             <MySider />
-            <Content style={{ position: "relative", left: 100 }}>
-              <Routes>
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/" element={<MainPage />} />
-                <Route path="/PostPage" element={<PostPage />} />
-                <Route path="/update/:userId" element={<UserUpdatePage />} />
-                <Route path="*" element={<MainPage />} />
-              </Routes>
+            <Content>
+              <div className="contentDiv">
+                <Routes>
+                  <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/" element={<MainPage />} />
+                  <Route path="/PostPage" element={<PostPage />} />
+                  <Route path="/update/:userId" element={<UserUpdatePage />} />
+                  <Route path="*" element={<MainPage />} />
+                </Routes>
+              </div>
             </Content>
           </>
         ) : (

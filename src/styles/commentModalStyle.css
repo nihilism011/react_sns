@@ -1,0 +1,18 @@
+.commentBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+}
+.commentContent {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+}
+.profileImg {
+  width: 100px;
+}
+.inputBox {
+  display: flex;
+  gap: 5px;
+}
