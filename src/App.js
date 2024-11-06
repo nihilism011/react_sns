@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import UserUpdatePage from "./page/user-update.js";
 import PostPage from "./page/PostPage.jsx";
 import SignupPage from "./page/SignupPage";
 import MainPage from "./page/MainPage";
@@ -47,7 +46,6 @@ function App() {
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/" element={<MainPage />} />
                   <Route path="/PostPage" element={<PostPage />} />
-                  <Route path="/update/:userId" element={<UserUpdatePage />} />
                   <Route path="*" element={<MainPage />} />
                 </Routes>
               </div>

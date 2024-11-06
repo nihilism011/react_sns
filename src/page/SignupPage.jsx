@@ -27,7 +27,6 @@ const SignupPage = () => {
           layout="vertical"
           form={form}
           onFinish={(e) => {
-            console.log(e);
             axios
               .post("/nonAuth/signup/submit", e)
               .then((data) => {

@@ -3,7 +3,7 @@ import { Carousel, Image } from "antd";
 
 const ImgSlider = ({ imgList }) => {
   const [imgLists, setImgLists] = useState(imgList);
-  if (imgLists.length === 0) {
+  if (imgLists && imgLists.length === 0) {
     return null;
   }
   const imageStyle = {
@@ -18,16 +18,17 @@ const ImgSlider = ({ imgList }) => {
   };
   return (
     <Carousel arrows infinite={false}>
-      {imgLists.map((imgName, index) => (
-        <div key={imgName} style={slideStyle}>
-          <Image
-            alt={`Slide ${index + 1}`}
-            src={`/static/${imgName}`}
-            style={imageStyle}
-            preview={false}
-          />
-        </div>
-      ))}
+      {imgLists &&
+        imgLists.map((imgName, index) => (
+          <div key={imgName} style={slideStyle}>
+            <Image
+              alt={`Slide ${index + 1}`}
+              src={`/resource/${imgName}`}
+              style={imageStyle}
+              preview={false}
+            />
+          </div>
+        ))}
     </Carousel>
   );
 };

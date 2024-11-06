@@ -19,7 +19,7 @@ const PhotoPost = ({ postInfo }) => {
       <img
         className="myPostsImg"
         alt={postInfo.imageName}
-        src={`/static/${postInfo.imageName}`}
+        src={`/resource/${postInfo.imageName}`}
       />
       <div
         className="likeCntBox"

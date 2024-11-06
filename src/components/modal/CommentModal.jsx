@@ -12,7 +12,6 @@ const CommentModal = ({ postId, state }) => {
     const url = "/post/comment";
     getAxios(url, { postId: postId }).then((data) => {
       setList(data);
-      console.log(data);
     });
   }, [postId, renderKey]);
 
@@ -55,10 +54,10 @@ const CommentModal = ({ postId, state }) => {
       classNames={"commentModal"}
     >
       {list === null ? (
-        <Spin></Spin>
-      ) : list.length === 0 ? (
+        <Spin />
+      ) : Array.isArray(list) && list.length === 0 ? (
         "댓글이 없습니다."
-      ) : (
+      ) : Array.isArray(list) ? (
         list.map((item, index) => (
           <div key={index} className="commentBox">
             <div className="profileImg">
@@ -67,6 +66,8 @@ const CommentModal = ({ postId, state }) => {
             <div className="commentContent">{item.content}</div>
           </div>
         ))
+      ) : (
+        "댓글 데이터를 불러오는 데 문제가 발생했습니다."
       )}
       <Divider style={{ margin: "8px 0" }} />
       <div className="inputBox">

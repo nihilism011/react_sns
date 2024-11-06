@@ -15,7 +15,6 @@ const ProfileInfo = () => {
     setUserInfo(null);
     navigate("/");
   };
-  console.log(userInfo);
   const handleProfileImg = (e) => {
     const image = Array.from(e.target.files);
     const formData = new FormData();

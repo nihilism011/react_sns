@@ -26,7 +26,7 @@ const Comment = ({ postInfo, setCommentCnt }) => {
   };
   return (
     <div>
-      {comments.length === 0 ? (
+      {comments && comments.length === 0 ? (
         <div>댓글이 없습니다.</div>
       ) : (
         comments.map((comment, index) => (
